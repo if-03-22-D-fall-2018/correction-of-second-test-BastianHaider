@@ -28,7 +28,7 @@
  {
    int length;
    Node head;
-   Node current;
+   Node current;//added current
  };
 
 Dictionary new_dictionary()
@@ -51,7 +51,7 @@ Dictionary new_dictionary()
   }
   else
   {
-    if (is_in_dict(dict,word))
+    if (is_in_dict(dict,word))//added if to check the doubles
     {
       return;
     }
@@ -75,7 +75,7 @@ Dictionary new_dictionary()
    }
    sfree(dictionary);
  }
- const char* get_next_entry(Dictionary dict)
+ const char* get_next_entry(Dictionary dict)//new Implementation
  {
    if (has_next(dict))
    {
@@ -98,13 +98,13 @@ Dictionary new_dictionary()
  }
  bool has_next(Dictionary dict)
  {
-   if (dict->current != 0)
+   if (dict->current != 0)//used current
    {
      return true;
    }
    return false;
  }
- void insert_sorted(Dictionary dict, const char* word)
+ void insert_sorted(Dictionary dict, const char* word)//new Implementation
  {
    if (dict->head==0) add(dict,word);
   else
@@ -140,16 +140,16 @@ Dictionary new_dictionary()
  bool is_in_dict(Dictionary dictionary, const char* word)
  {
    Node current=dictionary->head;
-   while(current != 0)
+   while(current != 0)//added while
   {
-    if(strcasecmp(current->word, word) == 0){
+    if(strcasecmp(current->word, word) == 0){//changed if
       return true;
     }
-    current = current->next;
+    current = current->next;//set current to current next
   }
   return false;
  }
  void start_iterating(Dictionary dict)
  {
-   dict->current=dict->head;
+   dict->current=dict->head;//set current to head
  }
